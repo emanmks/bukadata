@@ -1,3 +1,7 @@
+## BukaData Platform
+
+BukaData adalah Digital Platform dalam membangun Integritas Nasional dalam Pemberantasan Budaya Korupsi di Indonesia.
+
 ### Installing the project
 1. Cloning the project
 `git clone -b develop https://github.com/ewakoolabs/bukadata.git <folder_name>`
@@ -10,10 +14,6 @@
 
 4. Regenerate framework autoload files
 `php artisan dump-autoload`
-
-## BukaData Platform
-
-BukaData adalah Digital Platform dalam membangun Integritas Nasional dalam Pemberantasan Budaya Korupsi di Indonesia.
 
 ### License
 
