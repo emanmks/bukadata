@@ -1,0 +1,1 @@
+/home/solaiman/development/bukadata/app/views/transactions/index.blade.php

@@ -1,0 +1,1 @@
+/home/solaiman/development/bukadata/app/views/hierarchies/index.blade.php
