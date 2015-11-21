@@ -1,0 +1,1 @@
+/home/vadi/dev/hackathon/bukadata4/app/views/uoms/edit.blade.php
