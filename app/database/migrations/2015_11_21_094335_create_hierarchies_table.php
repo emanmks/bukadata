@@ -15,6 +15,8 @@ class CreateHierarchiesTable extends Migration {
 		Schema::create('hierarchies', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->string('name');
+			$table->text('description')->nullable();
 			$table->timestamps();
 		});
 	}
