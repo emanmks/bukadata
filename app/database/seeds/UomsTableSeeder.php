@@ -7,14 +7,10 @@ class UomsTableSeeder extends Seeder {
 
 	public function run()
 	{
-		$faker = Faker::create();
-
-		foreach(range(1, 10) as $index)
-		{
-			Uom::create([
-
-			]);
-		}
+		Uom::create(['code' => 'M', 'name' => 'Meter']);
+		Uom::create(['code' => 'M2', 'name' => 'Meter Persegi']);
+		Uom::create(['code' => 'M3', 'name' => 'Meter Kubik']);
+		Uom::create(['code' => 'L', 'name' => 'Liter']);
 	}
 
 }
