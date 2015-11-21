@@ -15,6 +15,9 @@ class CreateTaxratesTable extends Migration {
 		Schema::create('taxrates', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->string('name');
+			$table->text('description');
+			$table->decimal('taxrate_value',5,2);
 			$table->timestamps();
 		});
 	}
