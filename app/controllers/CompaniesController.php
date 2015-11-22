@@ -9,9 +9,7 @@ class CompaniesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$companies = Company::all();
-
-		return View::make('companies.index', compact('companies'));
+		return 
 	}
 
 	/**
