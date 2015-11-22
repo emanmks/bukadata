@@ -22,5 +22,6 @@ class BukaDataServiceProvider extends ServiceProvider
     protected function registerRepositories()
     {
         $this->app->bind('\BukaData\Contracts\OrganizationInterface', '\BukaData\Repositories\Organization');
+        $this->app->bind('\BukaData\Contracts\UomInterface', '\BukaData\Repositories\Uom');
     }
 }

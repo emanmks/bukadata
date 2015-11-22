@@ -10,4 +10,3 @@ class Organization implements OrganizationInterface {
 	}
 
 }
-

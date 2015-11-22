@@ -17,6 +17,7 @@ Route::get('/', function()
 });
 
 Route::resource('organization', 'OrganizationsController');
+Route::resource('uom', 'UomsController');
 Route::resource('transaction', 'TransactionsController');
 Route::resource('people', 'PeoplesController');
 Route::resource('taxrate', 'TaxratesController');

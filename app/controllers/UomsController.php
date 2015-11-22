@@ -1,7 +1,13 @@
 <?php
 
+use BukaData\Processors\Uom as UomProcessor;
+
 class UomsController extends \BaseController {
 
+	public function __construct(UomProcessor $uomProcessor)
+  	{
+    	$this->uomProcessor  = $uomProcessor;
+  	}
 	/**
 	 * Display a listing of uoms
 	 *
@@ -9,9 +15,10 @@ class UomsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$uoms = Uom::all();
+		//$uoms = Uom::all();
 
-		return View::make('uoms.index', compact('uoms'));
+		//return View::make('uoms.index', compact('uoms'));
+		return $this->uomProcessor->all();
 	}
 
 	/**
