@@ -12,7 +12,7 @@ class DropCompaniesTable extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::drop('companies');
 	}
 
 	/**
@@ -22,7 +22,15 @@ class DropCompaniesTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::create('institutions', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->string('name');
+			$table->string('tax_file_number');
+			$table->string('reg_no')->nullable();
+			$table->text('address')->nullable();
+			$table->timestamps();
+		});
 	}
 
 }
