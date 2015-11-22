@@ -16,13 +16,8 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-<<<<<<< HEAD
-Route::resource('organization', 'OrganizationsController');
-Route::resource('uom', 'UomsController');
-Route::resource('transaction', 'TransactionsController');
-=======
 Route::resource('organizations', 'OrganizationsController');
+Route::resource('uoms', 'UomsController');
 Route::resource('transactions', 'TransactionsController');
->>>>>>> 0c2e42f312d18746c256506fa5c2038720884580
 Route::resource('people', 'PeoplesController');
 Route::resource('taxrates', 'TaxratesController');
