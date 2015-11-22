@@ -17,7 +17,7 @@ class CreateProjectsTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->text('description');
-			$table->tinyInteger('long_term')->unsigned()->default(0);
+			$table->boolean('long_term')->unsigned()->default(0);
 			$table->integer('year_from')->unsigned();
 			$table->integer('year_to')->unsigned();
 			$table->double('budget',15,2)->unsigned()->default(0);

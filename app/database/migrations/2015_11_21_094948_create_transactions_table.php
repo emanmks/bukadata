@@ -17,14 +17,14 @@ class CreateTransactionsTable extends Migration {
 			$table->increments('id');
 			$table->integer('project_id')->unsigned();
 			$table->date('transaction_date');
-			$table->morphs('source');
-			$table->morphs('destination');
+			$table->integer('source_id');
+			$table->integer('destination_id');
 			$table->enum('object_type', array('Goods', 'Service'));
 			$table->text('description');
 			$table->integer('uom_id')->unsigned();
 			$table->double('amount', 15, 2);
 			$table->integer('tax_id')->unsigned();
-			$table->double('discount', 15, 2)->default(0);
+			$table->float('discount')->unsigned()->default(0);
 			$table->double('discount_amount', 15, 2)->default(0);
 			$table->tinyInteger('is_deleted')->unsigned()->default(0);
 			$table->timestamp('deleted_at')->nullable();

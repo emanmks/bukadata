@@ -19,8 +19,8 @@ class CreateUsersTable extends Migration {
 			$table->string('password');
 			$table->integer('person_id')->unsigned()->default(0);
 			$table->string('mobile');
-			$table->morphs('organization');
-			$table->string('remember_token', 100)->nullable();
+			$table->integer('organization_id');
+			$table->rememberToken();
 			$table->timestamps();
 		});
 	}
