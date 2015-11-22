@@ -16,7 +16,7 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::resource('organization', 'OrganizationsController');
-Route::resource('transaction', 'TransactionsController');
+Route::resource('organizations', 'OrganizationsController');
+Route::resource('transactions', 'TransactionsController');
 Route::resource('people', 'PeoplesController');
-Route::resource('taxrate', 'TaxratesController');
+Route::resource('taxrates', 'TaxratesController');

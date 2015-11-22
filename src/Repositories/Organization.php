@@ -1,7 +1,7 @@
 <?php namespace BukaData\Repositories;
 
 use Organization as OrganizationModel;
-use BukaData\Contracts\Repository\OrganizationInterface;
+use BukaData\Contracts\OrganizationInterface;
 
 class Organization implements OrganizationInterface {
 	
