@@ -7,14 +7,9 @@ class OrganizationTypesTableSeeder extends Seeder {
 
 	public function run()
 	{
-		$faker = Faker::create();
-
-		foreach(range(1, 10) as $index)
-		{
-			OrganizationType::create([
-
-			]);
-		}
+		OrganizationType::create(['name' => 'Organization 1', 'description' => 'Org 1']);
+		OrganizationType::create(['name' => 'Organization 2', 'description' => 'Org 2']);
+		OrganizationType::create(['name' => 'Organization 3', 'description' => 'Org 3']);
 	}
 
 }

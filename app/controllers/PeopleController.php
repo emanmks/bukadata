@@ -1,7 +1,13 @@
 <?php
 
+use BukaData\Processors\Person as PersonProcessor;
+
 class PeopleController extends \BaseController {
 
+	public function __construct(PersonProcessor $personProcessor)
+  	{
+    	$this->personProcessor  = $personProcessor;
+  	}
 	/**
 	 * Display a listing of people
 	 *
@@ -9,9 +15,10 @@ class PeopleController extends \BaseController {
 	 */
 	public function index()
 	{
-		$people = Person::all();
+		//$people = Person::all();
 
-		return View::make('people.index', compact('people'));
+		//return View::make('people.index', compact('people'));
+		return $this->personProcessor->all();
 	}
 
 	/**

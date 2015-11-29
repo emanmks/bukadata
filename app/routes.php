@@ -16,8 +16,13 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+Route::resource('companies', 'CompaniesController');
+Route::resource('hierarchies', 'HierarchiesController');
+Route::resource('organizationtypes', 'OrganizationTypesController');
 Route::resource('organizations', 'OrganizationsController');
-Route::resource('uoms', 'UomsController');
-Route::resource('transactions', 'TransactionsController');
-Route::resource('people', 'PeoplesController');
+Route::resource('people', 'PeopleController');
+Route::resource('projects', 'ProjectsController');
 Route::resource('taxrates', 'TaxratesController');
+Route::resource('transactions', 'TransactionsController');
+Route::resource('uoms', 'UomsController');
+Route::resource('users', 'UsersController');

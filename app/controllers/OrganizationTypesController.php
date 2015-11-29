@@ -1,7 +1,13 @@
 <?php
 
+use BukaData\Processors\OrganizationType as OrganizationTypeProcessor;
+
 class OrganizationTypesController extends \BaseController {
 
+	public function __construct(OrganizationTypeProcessor $organizationTypeProcessor)
+  	{
+    	$this->organizationTypeProcessor  = $organizationTypeProcessor;
+  	}
 	/**
 	 * Display a listing of organizationtypes
 	 *
@@ -9,9 +15,10 @@ class OrganizationTypesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$organizationtypes = Organizationtype::all();
+		//$organizationtypes = Organizationtype::all();
 
-		return View::make('organizationtypes.index', compact('organizationtypes'));
+		//return View::make('organizationtypes.index', compact('organizationtypes'));
+		return $this->organizationTypeProcessor->all();
 	}
 
 	/**

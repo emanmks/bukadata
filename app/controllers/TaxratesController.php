@@ -1,7 +1,13 @@
 <?php
 
+use BukaData\Processors\Taxrate as TaxrateProcessor;
+
 class TaxratesController extends \BaseController {
 
+	public function __construct(TaxrateProcessor $taxrateProcessor)
+  	{
+    	$this->taxrateProcessor  = $taxrateProcessor;
+  	}
 	/**
 	 * Display a listing of taxrates
 	 *
@@ -9,9 +15,10 @@ class TaxratesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$taxrates = Taxrate::all();
+		//$taxrates = Taxrate::all();
 
-		return View::make('taxrates.index', compact('taxrates'));
+		//return View::make('taxrates.index', compact('taxrates'));
+		return $this->taxrateProcessor->all();
 	}
 
 	/**

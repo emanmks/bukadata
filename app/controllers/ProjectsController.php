@@ -1,7 +1,13 @@
 <?php
 
+use BukaData\Processors\Project as ProjectProcessor;
+
 class ProjectsController extends \BaseController {
 
+	public function __construct(ProjectProcessor $projectProcessor)
+  	{
+    	$this->projectProcessor  = $projectProcessor;
+  	}
 	/**
 	 * Display a listing of projects
 	 *
@@ -9,9 +15,10 @@ class ProjectsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$projects = Project::all();
+		//$projects = Project::all();
 
-		return View::make('projects.index', compact('projects'));
+		//return View::make('projects.index', compact('projects'));
+		return $this->projectProcessor->all();
 	}
 
 	/**

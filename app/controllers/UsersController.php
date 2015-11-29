@@ -1,7 +1,13 @@
 <?php
 
+use BukaData\Processors\User as UserProcessor;
+
 class UsersController extends \BaseController {
 
+	public function __construct(UserProcessor $userProcessor)
+  	{
+    	$this->userProcessor  = $userProcessor;
+  	}
 	/**
 	 * Display a listing of users
 	 *
@@ -9,9 +15,10 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		$users = User::all();
+		//$users = User::all();
 
-		return View::make('users.index', compact('users'));
+		//return View::make('users.index', compact('users'));
+		return $this->userProcessor->all();
 	}
 
 	/**

@@ -1,6 +1,6 @@
 <?php namespace BukaData\Contracts;
 
-interface TransactionInterface
+interface HierarchyInterface
 {
     public function all();
 }

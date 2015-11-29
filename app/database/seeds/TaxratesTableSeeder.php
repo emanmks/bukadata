@@ -7,14 +7,8 @@ class TaxratesTableSeeder extends Seeder {
 
 	public function run()
 	{
-		$faker = Faker::create();
-
-		foreach(range(1, 10) as $index)
-		{
-			Taxrate::create([
-
-			]);
-		}
+		Taxrate::create(['name' => 'PPn', 'description' => 'PPn', 'taxrate_value' => '10']);
+		Taxrate::create(['name' => 'PPh', 'description' => 'PPh', 'taxrate_value' => '16']);
 	}
 
 }

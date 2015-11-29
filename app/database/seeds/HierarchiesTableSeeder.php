@@ -7,14 +7,9 @@ class HierarchiesTableSeeder extends Seeder {
 
 	public function run()
 	{
-		$faker = Faker::create();
-
-		foreach(range(1, 10) as $index)
-		{
-			Hierarchy::create([
-
-			]);
-		}
+		Hierarchy::create(['name' => 'Hierarchy 1', 'description' => 'Hrc 1']);
+		Hierarchy::create(['name' => 'Hierarchy 2', 'description' => 'Hrc 2']);
+		Hierarchy::create(['name' => 'Hierarchy 3', 'description' => 'Hrc 3']);
 	}
 
 }

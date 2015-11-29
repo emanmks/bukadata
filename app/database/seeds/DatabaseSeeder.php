@@ -10,12 +10,33 @@ class DatabaseSeeder extends Seeder {
 	public function run()
 	{
 		Eloquent::unguard();
+		
+		$this->call('HierarchiesTableSeeder');
+		$this->command->info('Hierarchy table seeded!');
+		
+		$this->call('OrganizationTypesTableSeeder');
+		$this->command->info('Organization type table seeded!');
 
 		$this->call('OrganizationsTableSeeder');
 		$this->command->info('Organization table seeded!');
 
+		$this->call('PeopleTableSeeder');
+		$this->command->info('People table seeded!');
+
+		$this->call('ProjectsTableSeeder');
+		$this->command->info('Project table seeded!');
+		
+		$this->call('TaxratesTableSeeder');
+		$this->command->info('Taxrate table seeded!');
+		
+		$this->call('TransactionsTableSeeder');
+		$this->command->info('Transaction table seeded!');
+		
 		$this->call('UomsTableSeeder');
 		$this->command->info('Uom table seeded!');
+		
+		$this->call('UsersTableSeeder');
+		$this->command->info('User table seeded!');
 	}
 
 }

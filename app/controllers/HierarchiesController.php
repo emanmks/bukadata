@@ -1,7 +1,13 @@
 <?php
 
+use BukaData\Processors\Hierarchy as HierarchyProcessor;
+
 class HierarchiesController extends \BaseController {
 
+	public function __construct(HierarchyProcessor $hierarchyProcessor)
+  	{
+    	$this->hierarchyProcessor  = $hierarchyProcessor;
+  	}
 	/**
 	 * Display a listing of hierarchies
 	 *
@@ -9,9 +15,10 @@ class HierarchiesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$hierarchies = Hierarchy::all();
+		//$hierarchies = Hierarchy::all();
 
-		return View::make('hierarchies.index', compact('hierarchies'));
+		//return View::make('hierarchies.index', compact('hierarchies'));
+		return $this->hierarchyProcessor->all();
 	}
 
 	/**

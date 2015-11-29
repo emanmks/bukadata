@@ -1,7 +1,13 @@
 <?php
 
+use BukaData\Processors\Transaction as TransactionProcessor;
+
 class TransactionsController extends \BaseController {
 
+	public function __construct(TransactionProcessor $transactionProcessor)
+  	{
+    	$this->transactionProcessor  = $transactionProcessor;
+  	}
 	/**
 	 * Display a listing of transactions
 	 *
@@ -9,9 +15,10 @@ class TransactionsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$transactions = Transaction::all();
+		//$transactions = Transaction::all();
 
-		return View::make('transactions.index', compact('transactions'));
+		//return View::make('transactions.index', compact('transactions'));
+		return $this->transactionProcessor->all();
 	}
 
 	/**

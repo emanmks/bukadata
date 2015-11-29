@@ -16,7 +16,7 @@ class CreateOrganizationTypesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('name');
-			$table->description('text')->nullable();
+			$table->text('description')->nullable();
 			$table->timestamps();
 		});
 	}

@@ -1,6 +1,6 @@
 <?php namespace BukaData\Contracts;
 
-interface TransactionInterface
+interface TaxrateInterface
 {
     public function all();
 }
