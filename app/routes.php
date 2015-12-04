@@ -11,18 +11,21 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/' 'HomeController@index');
+Route::get('tentang-buka-data' 'HomeController@what');
+Route::get('tim-buka-data' 'HomeController@about');
+Route::get('manfaat-buka-data' 'HomeController@why');
+Route::get('untuk-siapa' 'HomeController@who');
+Route::get('dokumentasi-api' 'HomeController@docs');
+Route::get('' 'HomeController@docs');
 
-Route::resource('companies', 'CompaniesController');
-Route::resource('hierarchies', 'HierarchiesController');
-Route::resource('organizationtypes', 'OrganizationTypesController');
-Route::resource('organizations', 'OrganizationsController');
-Route::resource('people', 'PeopleController');
-Route::resource('projects', 'ProjectsController');
-Route::resource('taxrates', 'TaxratesController');
-Route::resource('transactions', 'TransactionsController');
-Route::resource('uoms', 'UomsController');
-Route::resource('users', 'UsersController');
+Route::resource('api/companies', 'CompaniesController');
+Route::resource('api/hierarchies', 'HierarchiesController');
+Route::resource('api/organizationtypes', 'OrganizationTypesController');
+Route::resource('api/organizations', 'OrganizationsController');
+Route::resource('api/people', 'PeopleController');
+Route::resource('api/projects', 'ProjectsController');
+Route::resource('api/taxrates', 'TaxratesController');
+Route::resource('api/transactions', 'TransactionsController');
+Route::resource('api/uoms', 'UomsController');
+Route::resource('api/users', 'UsersController');

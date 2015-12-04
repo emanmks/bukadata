@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder {
 		Eloquent::unguard();
 		
 		$this->call('HierarchiesTableSeeder');
-		$this->command->info('Hierarchy table seeded!');
+		$this->command->info('Hierarchy table seeded!'); // This is good but unnecessary
 		
 		$this->call('OrganizationTypesTableSeeder');
 		$this->command->info('Organization type table seeded!');
