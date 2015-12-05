@@ -22,7 +22,7 @@ class OrganizationTypesTableSeeder extends Seeder {
 		foreach($organizationTypes as $organizationType){
 			OrganizationType::create([
 				'name' => $organizationType,
-				'description' => ' ',
+				'details' => ' ',
 			]);
 		}
 	}

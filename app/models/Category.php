@@ -12,7 +12,7 @@ class Category extends \Eloquent {
 	// Don't forget to fill this array
 	protected $fillable = [
         'code',
-        'transaction_type',
+        'transaction_types',
         'name',
         'details'
     ];

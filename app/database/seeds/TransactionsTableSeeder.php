@@ -10,12 +10,12 @@ class TransactionsTableSeeder extends Seeder {
 		$faker = Faker::create();
 
         $organizations = Organization::lists('id');
-
+        $categories = Category::lists('id');
 
         foreach($organizations as $organization) {
 
 
-            foreach(range(1, 100) as $index)
+            foreach(range(1, 10) as $index)
             {
                 $project = Project::create([
                     'name' => 'Project ' . $faker->name,
@@ -31,12 +31,13 @@ class TransactionsTableSeeder extends Seeder {
                     'transaction_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
                     'source_id' => $organization,
                     'destination_id' => $faker->randomElement($organizations),
-                    'object_type' => 'Service',
-                    'description' => $faker->word,
+                    'objects' => 'Service',
                     'uom_id' => '0',
                     'amount' => $faker->randomFloat(null, 999999, 9999999),
                     'tax_id' => 0,
                     'project_id' => $project->getKey(),
+                    'category_id' => $faker->randomElement($categories),
+                    'details' => $faker->paragraph(),
                 ]);
             }
         }

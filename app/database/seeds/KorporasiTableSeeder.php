@@ -16,7 +16,7 @@ class KorporasiTableSeeder extends Seeder {
 		foreach(range(1, 100) as $index)
 		{
 			Organization::create([
-				'organization_type' => $faker->randomElement($organizationTypes),
+				'organization_type_id' => $faker->randomElement($organizationTypes),
 				'hierarchy_id' => 0,
 				'parent_id' => 0,
 				'name' => $faker->company,

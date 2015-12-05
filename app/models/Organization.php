@@ -14,7 +14,7 @@ class Organization extends \Eloquent {
 
 	// Don't forget to fill this array
 	protected $fillable = [
-        'organization_type',
+        'organization_type_id',
         'hierarchy_id',
         'parent_id',
         'name',

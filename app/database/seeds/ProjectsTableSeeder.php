@@ -13,7 +13,7 @@ class ProjectsTableSeeder extends Seeder {
 		{
 			Project::create([
 				'name' => 'Project ' . $faker->name,
-				'deetails' => $faker->word,
+				'description' => $faker->word,
 				'long_term' => false,
 				'year_from' => $faker->numberBetween(1990,2000),
 				'year_to' => $faker->numberBetween(2001,2020),

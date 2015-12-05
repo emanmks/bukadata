@@ -19,7 +19,8 @@ class Project extends \Eloquent {
         'long_term',
         'year_from',
         'year_to',
-        'budget'
+        'budget',
+		'description',
     ];
 
 }

@@ -62,7 +62,7 @@ class InstansiDKIJakartaTableSeeder extends Seeder {
 
         foreach($organizations as $organization){
             Organization::create([
-                    'organization_type' => $organizationTypeId,
+                    'organization_type_id' => $organizationTypeId,
                     'hierarchy_id' => 1,
                     'parent_id' => 0,
                     'name' => $organization,
