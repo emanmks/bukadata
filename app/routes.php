@@ -19,6 +19,7 @@ Route::get('untuk-siapa', 'HomeController@who');
 Route::get('dokumentasi-api', 'HomeController@docs');
 
 Route::group(array('prefix' => 'api'), function() {
+    Route::resource('categories', 'CategoriesController');
     Route::resource('hierarchies', 'HierarchiesController');
     Route::resource('organizationtypes', 'OrganizationTypesController');
     Route::resource('organizations', 'OrganizationsController');

@@ -30,5 +30,5 @@ interface CategoryInterface
      * @param  integer
      * @return not found eloquent exception, boolean
      */
-    public function destory($id);
+    public function destroy($id);
 }

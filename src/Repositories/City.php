@@ -5,8 +5,13 @@ use BukaData\Contracts\CityInterface;
 
 class City implements CityInterface {
     
+    /**
+     * @return json
+     */
     public function all() {
         return CityModel::all();
     }
+
+    
 
 }

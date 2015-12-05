@@ -2,6 +2,8 @@
 
 use Category as CategoryModel;
 use BukaData\Contracts\CategoryInterface;
+use Validator;
+use Response;
 
 class Category implements CategoryInterface {
     
@@ -26,9 +28,8 @@ class Category implements CategoryInterface {
      */
     public function store($inputs) {
         $validator = Validator::make($inputs, CategoryModel::$rules);
-        if ($validator->fails()) return $validator;
-        if (Category::create($data)) return true;
-        return false;
+        if ($validator->fails()) return $validator->messages()->toJson();
+        CategoryModel::create($inputs);
     }
 
     /**
@@ -37,12 +38,11 @@ class Category implements CategoryInterface {
      * @return not found eloquent exception, validation exception, boolean
      */
     public function update($id, $inputs) {
-        if(!$category = CategoryModel::findOrFail($id)) return $category;
+        if(!$category = CategoryModel::find($id)) return Response::json(null, 404);;
 
         $validator = Validator::make($inputs, CategoryModel::$rules);
-        if ($validator->fails()) return $validator;
-        if ($category->update($)) return true;
-        return false;
+        if ($validator->fails()) return $validator->messages()->toJson();
+        $category->update($inputs);
     }
 
     /**
@@ -50,9 +50,8 @@ class Category implements CategoryInterface {
      * @return not found eloquent exception, boolean
      */
     public function destroy($id) {
-        if(!$category = CategoryModel::findOrFail($id)) return $category;
+        if(!$category = CategoryModel::find($id)) return Response::json(null, 404);;
         if(!$category->transactions) $category->delete();
-        return false;
     }
 
 }

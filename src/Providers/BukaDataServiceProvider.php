@@ -29,5 +29,6 @@ class BukaDataServiceProvider extends ServiceProvider
         $this->app->bind('\BukaData\Contracts\TaxrateInterface', '\BukaData\Repositories\Taxrate');
         $this->app->bind('\BukaData\Contracts\TransactionInterface', '\BukaData\Repositories\Transaction');
         $this->app->bind('\BukaData\Contracts\UomInterface', '\BukaData\Repositories\Uom');
+        $this->app->bind('\BukaData\Contracts\CategoryInterface', '\BukaData\Repositories\Category');
     }
 }

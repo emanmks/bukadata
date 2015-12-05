@@ -1,6 +1,13 @@
 <?php
 
+use BukaData\Contracts\CategoryInterface as CategoryRepo;
+
 class CategoriesController extends \BaseController {
+
+	public function __construct(CategoryRepo $categoryRepo)
+  	{
+    	$this->categoryRepo  = $categoryRepo;
+  	}
 
 	/**
 	 * Display a listing of categories
@@ -9,19 +16,12 @@ class CategoriesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$categories = Category::all();
-
-		return View::make('categories.index', compact('categories'));
+		return $this->categoryRepo->all();
 	}
 
-	/**
-	 * Show the form for creating a new category
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function search()
 	{
-		return View::make('categories.create');
+		if(Input::has('param')) return $this->categoryRepo->search(Input::get('param'));
 	}
 
 	/**
@@ -31,42 +31,8 @@ class CategoriesController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Category::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		Category::create($data);
-
-		return Redirect::route('categories.index');
-	}
-
-	/**
-	 * Display the specified category.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$category = Category::findOrFail($id);
-
-		return View::make('categories.show', compact('category'));
-	}
-
-	/**
-	 * Show the form for editing the specified category.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$category = Category::find($id);
-
-		return View::make('categories.edit', compact('category'));
+		$inputs = Input::all();
+		return $this->categoryRepo->store($inputs);
 	}
 
 	/**
@@ -77,18 +43,8 @@ class CategoriesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$category = Category::findOrFail($id);
-
-		$validator = Validator::make($data = Input::all(), Category::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		$category->update($data);
-
-		return Redirect::route('categories.index');
+		$inputs = Input::all();
+		return $this->categoryRepo->update($id, $inputs);
 	}
 
 	/**
@@ -99,9 +55,7 @@ class CategoriesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		Category::destroy($id);
-
-		return Redirect::route('categories.index');
+		return $this->categoryRepo->update($id);
 	}
 
 }
