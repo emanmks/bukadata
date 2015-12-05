@@ -37,6 +37,9 @@ class DatabaseSeeder extends Seeder {
 		
 		$this->call('UsersTableSeeder');
 		$this->command->info('User table seeded!');
+
+		$this->call('InstansiDKIJakartaTableSeeder');
+		$this->command->info('Organization DKI Jakarta table seeded!');
 	}
 
 }
