@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder {
 		$this->call('OrganizationTypesTableSeeder');
 		$this->command->info('Organization type table seeded!');
 
-		$this->call('OrganizationsTableSeeder');
-		$this->command->info('Organization table seeded!');
+		//$this->call('OrganizationsTableSeeder');
+		//$this->command->info('Organization table seeded!');
 
 		$this->call('PeopleTableSeeder');
 		$this->command->info('People table seeded!');
