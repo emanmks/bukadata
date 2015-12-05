@@ -55,7 +55,7 @@ class CategoriesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		return $this->categoryRepo->update($id);
+		return $this->categoryRepo->destroy($id);
 	}
 
 }
