@@ -21,6 +21,10 @@ class BukaDataServiceProvider extends ServiceProvider
      */
     protected function registerRepositories()
     {
+        $this->app->bind('\BukaData\Contracts\CategoryInterface', '\BukaData\Repositories\Category');
+        $this->app->bind('\BukaData\Contracts\CityInterface', '\BukaData\Repositories\City');
+        $this->app->bind('\BukaData\Contracts\ClassificationInterface', '\BukaData\Repositories\Classification');
+        $this->app->bind('\BukaData\Contracts\DistrictInterface', '\BukaData\Repositories\District');
         $this->app->bind('\BukaData\Contracts\HierarchyInterface', '\BukaData\Repositories\Hierarchy');
         $this->app->bind('\BukaData\Contracts\OrganizationInterface', '\BukaData\Repositories\Organization');
         $this->app->bind('\BukaData\Contracts\OrganizationTypeInterface', '\BukaData\Repositories\OrganizationType');
@@ -29,6 +33,7 @@ class BukaDataServiceProvider extends ServiceProvider
         $this->app->bind('\BukaData\Contracts\TaxrateInterface', '\BukaData\Repositories\Taxrate');
         $this->app->bind('\BukaData\Contracts\TransactionInterface', '\BukaData\Repositories\Transaction');
         $this->app->bind('\BukaData\Contracts\UomInterface', '\BukaData\Repositories\Uom');
-        $this->app->bind('\BukaData\Contracts\CategoryInterface', '\BukaData\Repositories\Category');
+        $this->app->bind('\BukaData\Contracts\VillageInterface', '\BukaData\Repositories\Village');
+        
     }
 }
