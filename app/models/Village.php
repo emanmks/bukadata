@@ -4,10 +4,14 @@ class Village extends \Eloquent {
 
 	// Add your validation rules here
 	public static $rules = [
-		// 'title' => 'required'
+		'district_id' => 'required|numeric',
+        'name' => 'description'
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = [];
+	protected $fillable = [
+        'district_id',
+        'name'
+    ];
 
 }

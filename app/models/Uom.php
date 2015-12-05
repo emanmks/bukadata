@@ -4,10 +4,15 @@ class Uom extends \Eloquent {
 
 	// Add your validation rules here
 	public static $rules = [
-		// 'title' => 'required'
+        'code' => 'required',
+		'name' => 'required'
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = [];
+	protected $fillable = [
+        'code',
+        'name',
+        'details'
+    ];
 
 }
