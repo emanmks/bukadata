@@ -11,13 +11,12 @@
 |
 */
 
-Route::get('/' 'HomeController@index');
-Route::get('tentang-buka-data' 'HomeController@what');
-Route::get('tim-buka-data' 'HomeController@about');
-Route::get('manfaat-buka-data' 'HomeController@why');
-Route::get('untuk-siapa' 'HomeController@who');
-Route::get('dokumentasi-api' 'HomeController@docs');
-Route::get('' 'HomeController@docs');
+Route::get('/', 'HomeController@index');
+Route::get('tentang-buka-data',  'HomeController@what');
+Route::get('tim-buka-data', 'HomeController@about');
+Route::get('manfaat-buka-data', 'HomeController@why');
+Route::get('untuk-siapa', 'HomeController@who');
+Route::get('dokumentasi-api', 'HomeController@docs');
 
 Route::resource('api/companies', 'CompaniesController');
 Route::resource('api/hierarchies', 'HierarchiesController');
