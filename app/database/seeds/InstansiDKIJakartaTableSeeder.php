@@ -8,7 +8,8 @@ class InstansiDKIJakartaTableSeeder extends Seeder {
 	public function run()
 	{
         $faker = Faker::create();
-        $provinsi = "Provonsi DKI Jakarta";
+
+        $organizationTypeId = OrganizationType::whereName('Instansi Pemerintah')->first()->id;
 
 		$organizations = [
             'Badan Kepegawaian Daerah',
@@ -61,7 +62,7 @@ class InstansiDKIJakartaTableSeeder extends Seeder {
 
         foreach($organizations as $organization){
             Organization::create([
-                    'organization_type' => 0,
+                    'organization_type' => $organizationTypeId,
                     'hierarchy_id' => 0,
                     'parent_id' => 0,
                     'name' => $organization,
