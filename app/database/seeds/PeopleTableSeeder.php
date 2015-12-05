@@ -15,7 +15,7 @@ class PeopleTableSeeder extends Seeder {
 				'name' => $faker->name,
 				'tax_file_number' => str_random(15),
 				'reg_no' => str_random(12),
-				'address' => $faker->addres
+				'address' => $faker->address
 			]);
 		}
 	}

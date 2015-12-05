@@ -31,10 +31,7 @@ class DatabaseSeeder extends Seeder {
 		
 		$this->call('TaxratesTableSeeder');
 		$this->command->info('Taxrate table seeded!');
-		
-		$this->call('TransactionsTableSeeder');
-		$this->command->info('Transaction table seeded!');
-		
+
 		$this->call('UomsTableSeeder');
 		$this->command->info('Uom table seeded!');
 
@@ -43,6 +40,10 @@ class DatabaseSeeder extends Seeder {
 
     	$this->call('KorporasiTableSeeder');
 		$this->command->info('Korporasi table seeded!');
-	}
+
+        $this->call('TransactionsTableSeeder');
+        $this->command->info('Transaction table seeded!');
+
+    }
 
 }
