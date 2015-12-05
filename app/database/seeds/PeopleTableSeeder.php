@@ -9,13 +9,13 @@ class PeopleTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
-		foreach(range(1, 10) as $index)
+		foreach(range(1, 100) as $index)
 		{
 			Person::create([
 				'name' => $faker->name,
 				'tax_file_number' => str_random(15),
 				'reg_no' => str_random(12),
-				'address' => $faker->word
+				'address' => $faker->addres
 			]);
 		}
 	}
