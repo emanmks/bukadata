@@ -7,9 +7,11 @@ class HierarchiesTableSeeder extends Seeder {
 
 	public function run()
 	{
-		Hierarchy::create(['name' => 'Hierarchy 1', 'description' => 'Hrc 1']);
-		Hierarchy::create(['name' => 'Hierarchy 2', 'description' => 'Hrc 2']);
-		Hierarchy::create(['name' => 'Hierarchy 3', 'description' => 'Hrc 3']);
+		Hierarchy::create(['name' => 'Tingkat Pusat', 'description' => 'Tingkat Pusat']);
+		Hierarchy::create(['name' => 'Tingkat I', 'description' => 'Tingkat Propinsi']);
+        Hierarchy::create(['name' => 'Tingkat II', 'description' => 'Tingkat Kota / Kabupaten']);
+        Hierarchy::create(['name' => 'Tingkat Kecamatan', 'description' => 'Tingkat Kecamatan']);
+		Hierarchy::create(['name' => 'Tingkat Kelurahan / Desa', 'description' => 'Tingkat Kelurahan / Desa']);
 	}
 
 }

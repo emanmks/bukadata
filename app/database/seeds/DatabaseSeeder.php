@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder {
 		$this->call('OrganizationTypesTableSeeder');
 		$this->command->info('Organization type table seeded!');
 
-		$this->call('OrganizationsTableSeeder');
-		$this->command->info('Organization table seeded!');
+		//$this->call('OrganizationsTableSeeder');
+		//$this->command->info('Organization table seeded!');
 
 		$this->call('PeopleTableSeeder');
 		$this->command->info('People table seeded!');
@@ -40,6 +40,9 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call('InstansiDKIJakartaTableSeeder');
 		$this->command->info('Organization DKI Jakarta table seeded!');
+
+    	$this->call('KorporasiTableSeeder');
+		$this->command->info('Korporasi table seeded!');
 	}
 
 }
