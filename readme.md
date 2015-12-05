@@ -31,11 +31,12 @@ User BukaData sangat diharapkan berasal dari (diurut berdasarkan prioritas):
 9. Lembaga Amal, Zakat & Infaq
 10. Individu
 Setiap user wajib memiliki Nomor Pokok Wajib Pajak untuk keperluan registrasi.
-Tentunya hasil pengolahan informasi ini untuk disajikan kepada masyarakat umum. BukaData membuka kesempatan bagi seluruh masyarakat untuk melihat aliran uang mereka, berapa estimasi penerimaan pajak pemerintah dari transaksi-transaksi tersebut
+Tentunya hasil pengolahan informasi ini untuk disajikan kepada masyarakat umum. BukaData membuka kesempatan bagi seluruh masyarakat untuk melihat aliran uang mereka, berapa estimasi penerimaan pajak pemerintah dari transaksi-transaksi tersebut.
 
 ### Manfaat
 BukaData memiliki banyak manfaat, tergantung akan digunakan untuk apa saja data mentah yang dikumpulkan BukaData, tapi secara umum, BukaData setidaknya memiliki fitur sebagai berikut:
 1. Sebagai software keuangan sederhana untuk perusahaan yang belum memiliki software keunangan. BukaData menyediakan realtime monitoring transaksi keuangan
+2. Sebagai Media Publikasi Transparansi Transaksi Keungan
 
 ### Implementasi
 Tim pengembang berupaya menjadikan BukaData:

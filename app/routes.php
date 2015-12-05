@@ -12,11 +12,22 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('tentang-buka-data',  'HomeController@what');
-Route::get('tim-buka-data', 'HomeController@about');
-Route::get('manfaat-buka-data', 'HomeController@why');
-Route::get('untuk-siapa', 'HomeController@who');
-Route::get('dokumentasi-api', 'HomeController@docs');
+Route::get('about',  'HomeController@about');
+Route::get('manfaat', 'HomeController@value');
+Route::get('partisipasi', 'HomeController@participation');
+Route::get('bergabung', 'HomeController@registration');
+Route::get('dokumentasi-api', 'HomeController@documentation');
+
+Route::group(array('prefix' => 'dashboard'), function() {
+    Route::get('transactions', 'DashboardController@showTransactions');
+    Route::get('profile/{id}', 'DashboardController@showProfile');
+});
+
+Route::group(array('prefix' => 'publikasi'), function() {
+    Route::get('estimasi-pajak', 'PublishesController@estimateTax');
+    Route::get('penyerapan-anggaran', 'PublishesController@calculateSpend');
+    Route::get('ranking-integritas', 'PublishesController@generateRanking');
+});
 
 Route::group(array('prefix' => 'api'), function() {
     Route::resource('categories', 'CategoriesController');
@@ -28,5 +39,4 @@ Route::group(array('prefix' => 'api'), function() {
     Route::resource('taxrates', 'TaxratesController');
     Route::resource('transactions', 'TransactionsController');
     Route::resource('uoms', 'UomsController');
-    Route::resource('users', 'UsersController');
 });
