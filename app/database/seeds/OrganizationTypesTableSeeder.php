@@ -7,9 +7,24 @@ class OrganizationTypesTableSeeder extends Seeder {
 
 	public function run()
 	{
-		OrganizationType::create(['name' => 'Organization 1', 'description' => 'Org 1']);
-		OrganizationType::create(['name' => 'Organization 2', 'description' => 'Org 2']);
-		OrganizationType::create(['name' => 'Organization 3', 'description' => 'Org 3']);
+		$organizationTypes = [
+			'Instansi Pemerintah',
+			'Badan Usaha Milik Pemerintah',
+			'Badan Usaha Milik Daerah',
+			'Korporasi Mitra Pemerintah',
+			'Partai Politik',
+			'Korporasi Umum',
+			'Organisasi Independen',
+			'Organisasi Kemasyarakatan & Kemanusiaan',
+			'Lembaga Amal Zakat & Infaq',
+		];
+
+		foreach($organizationTypes as $organizationType){
+			OrganizationType::create([
+				'name' => $organizationType,
+				'description' => ' ',
+			]);
+		}
 	}
 
 }
