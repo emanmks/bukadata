@@ -1,1 +1,0 @@
-/home/solaiman/development/bukadata/app/views/companies/show.blade.php
