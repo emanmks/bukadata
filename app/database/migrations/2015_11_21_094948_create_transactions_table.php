@@ -16,17 +16,19 @@ class CreateTransactionsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('project_id')->unsigned();
-			$table->date('transaction_date');
+			$table->integer('category_id')->unsigned();
+			$table->integer('tax_id')->unsigned();
+			$table->enum('objects', array('Money','Goods', 'Service'))->default('Money');
 			$table->integer('source_id');
 			$table->integer('destination_id');
-			$table->enum('object_type', array('Goods', 'Service'));
-			$table->text('description');
+			$table->date('transaction_date');
 			$table->integer('uom_id')->unsigned();
+			$table->text('details');
 			$table->double('amount', 15, 2);
-			$table->integer('tax_id')->unsigned();
 			$table->float('discount')->unsigned()->default(0);
 			$table->double('discount_amount', 15, 2)->default(0);
-			$table->tinyInteger('is_deleted')->unsigned()->default(0);
+			$table->boolean('tax_inclusive')->unsigned()->default(0);
+			$table->boolean('is_deleted')->unsigned()->default(0);
 			$table->timestamp('deleted_at')->nullable();
 			$table->integer('deleted_by')->unsigned()->default(0);
 			$table->timestamps();

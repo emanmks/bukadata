@@ -1,0 +1,1 @@
+/home/solaiman/Development/bukadata/app/views/categories/edit.blade.php

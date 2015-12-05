@@ -4,12 +4,12 @@ class Organization extends \Eloquent {
 
 	// Add your validation rules here
 	public static $rules = [
-		'organization_type' => 'required',
-        'hierarchy_id' => 'required',
-        'parent_id' => 'required',
+		'organization_type' => 'required|numeric',
+        'hierarchy_id' => 'required|numeric',
+        'parent_id' => 'required|numeric',
         'name' => 'name',
-        'tax_file_number' => 'required',
-        'reg_no' => 'required'
+        'tax_file_number' => 'required|alpha_num',
+        'reg_no' => 'required|alpha_num'
 	];
 
 	// Don't forget to fill this array

@@ -9,7 +9,7 @@ class OrganizationTypesTableSeeder extends Seeder {
 	{
 		$organizationTypes = [
 			'Instansi Pemerintah',
-			'Badan Usaha Milik Pemerintah',
+			'Badan Usaha Milik Negara',
 			'Badan Usaha Milik Daerah',
 			'Korporasi Mitra Pemerintah',
 			'Partai Politik',

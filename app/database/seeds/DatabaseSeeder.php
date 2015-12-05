@@ -13,12 +13,15 @@ class DatabaseSeeder extends Seeder {
 		
 		$this->call('HierarchiesTableSeeder');
 		$this->command->info('Hierarchy table seeded!'); // This is good but unnecessary
+
+		$this->call('CategoriesTableSeeder');
+		$this->command->info('Categories table seeded!');
+
+		$this->call('ClassificationsTableSeeder');
+		$this->command->info('Classifications table seeded!');
 		
 		$this->call('OrganizationTypesTableSeeder');
 		$this->command->info('Organization type table seeded!');
-
-		//$this->call('OrganizationsTableSeeder');
-		//$this->command->info('Organization table seeded!');
 
 		$this->call('PeopleTableSeeder');
 		$this->command->info('People table seeded!');
@@ -34,9 +37,6 @@ class DatabaseSeeder extends Seeder {
 		
 		$this->call('UomsTableSeeder');
 		$this->command->info('Uom table seeded!');
-		
-		$this->call('UsersTableSeeder');
-		$this->command->info('User table seeded!');
 
 		$this->call('InstansiDKIJakartaTableSeeder');
 		$this->command->info('Organization DKI Jakarta table seeded!');

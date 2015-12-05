@@ -16,7 +16,7 @@ class CreateTaxratesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('name');
-			$table->text('description')->nullable();
+			$table->text('details')->nullable();
 			$table->decimal('taxrate_value',5,2);
 			$table->timestamps();
 		});

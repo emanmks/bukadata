@@ -4,7 +4,7 @@ class OrganizationType extends \Eloquent {
 
 	// Add your validation rules here
 	public static $rules = [
-		// 'title' => 'required'
+		'name' => 'required'
 	];
 
 	// Don't forget to fill this array

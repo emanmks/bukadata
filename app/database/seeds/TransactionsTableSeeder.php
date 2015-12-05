@@ -16,7 +16,7 @@ class TransactionsTableSeeder extends Seeder {
 				'source_id' => $faker->numberBetween(1,10),
 				'destination_id' => $faker->numberBetween(1,10),
 				'object_type' => 'Service',
-				'description' => $faker->word,
+				'details' => $faker->word,
 				'uom_id' => '0',
 				'amount' => $faker->randomFloat(null, 999999, 9999999),
 				'tax_id' => 0,
