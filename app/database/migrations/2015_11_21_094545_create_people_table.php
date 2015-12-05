@@ -17,7 +17,6 @@ class CreatePeopleTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('tax_file_number');
-			$table->string('reg_no')->nullable();
 			$table->text('address')->nullable();
 			$table->timestamps();
 		});

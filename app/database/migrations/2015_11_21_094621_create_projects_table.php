@@ -15,6 +15,7 @@ class CreateProjectsTable extends Migration {
 		Schema::create('projects', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('organization_id')->unsigned()->default(0);
 			$table->string('name');
 			$table->text('description');
 			$table->boolean('long_term')->default(false);
