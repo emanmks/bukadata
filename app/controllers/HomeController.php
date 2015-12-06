@@ -1,12 +1,20 @@
 <?php
 
 use BukaData\Contracts\OrganizationTypeInterface as OrganizationTypeRepo;
+use BukaData\Contracts\HierarchyInterface as HierarchyProcessor;
+use BukaData\Contracts\CityInterface as CityRepo;
+use BukaData\Contracts\DistrictInterface as District;
+use BukaData\Contracts\VillageInterface as VillageRepo;
 
 class HomeController extends BaseController {
 
-	public function __construct(OrganizationTypeRepo $organizationTypeRepo)
+	public function __construct(VillageRepo $villageRepo, OrganizationTypeRepo $organizationTypeRepo, HierarchyProcessor $hierarchyProcessor, CityRepo $cityRepo, District $district)
   	{
     	$this->organizationTypeRepo  = $organizationTypeRepo;
+    	$this->hierarchyProcessor  = $hierarchyProcessor;
+    	$this->cityRepo  = $cityRepo;
+    	$this->district = $district;
+    	$this->villageRepo = $villageRepo;
   	}
 
 	/*
@@ -45,7 +53,13 @@ class HomeController extends BaseController {
 	public function registration()
 	{
 		$organizationTypes = $this->organizationTypeRepo->all()->lists("name","id");
-		return View::make('home.registration', compact('organizationTypes'));
+		$hierarchies = $this->hierarchyProcessor->all()->lists("name","id");
+		$cities = $this->cityRepo->all()->lists("name", "id");
+		$districts = $this->district->all()->lists("name", "id");
+		$villages = $this->villageRepo->all()->lists("name", "id");
+
+		return View::make('home.registration', compact('villages','organizationTypes', 'hierarchies', 'cities', 'districts'));
+
 	}
 
 	public function documentation()
