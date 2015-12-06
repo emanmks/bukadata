@@ -1,6 +1,13 @@
 <?php
 
+use BukaData\Contracts\OrganizationTypeInterface as OrganizationTypeRepo;
+
 class HomeController extends BaseController {
+
+	public function __construct(OrganizationTypeRepo $organizationTypeRepo)
+  	{
+    	$this->organizationTypeRepo  = $organizationTypeRepo;
+  	}
 
 	/*
 	|--------------------------------------------------------------------------
@@ -37,7 +44,8 @@ class HomeController extends BaseController {
 
 	public function registration()
 	{
-		return View::make('home.registration');
+		$organizationTypes = $this->OrganizationTypeRepo->all()->lists("name","id");
+		return View::make('home.registration', compact('organizationTypes'));
 	}
 
 	public function documentation()
