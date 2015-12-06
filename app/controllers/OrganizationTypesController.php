@@ -1,114 +1,59 @@
 <?php
 
-use BukaData\Processors\OrganizationType as OrganizationTypeProcessor;
+use BukaData\Contracts\OrganizationTypeInterface as OrganizationTypeRepo;
 
 class OrganizationTypesController extends \BaseController {
 
-	public function __construct(OrganizationTypeProcessor $organizationTypeProcessor)
+	public function __construct(OrganizationTypeRepo $organizationTypeRepo)
   	{
-    	$this->organizationTypeProcessor  = $organizationTypeProcessor;
+    	$this->organizationTypeRepo  = $organizationTypeRepo;
   	}
+	
 	/**
-	 * Display a listing of organizationtypes
+	 * Display a listing of categories
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		//$organizationtypes = Organizationtype::all();
-
-		//return View::make('organizationtypes.index', compact('organizationtypes'));
-		return $this->organizationTypeProcessor->all();
+		return $this->organizationTypeRepo->all();
 	}
 
-	/**
-	 * Show the form for creating a new organizationtype
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function search()
 	{
-		return View::make('organizationtypes.create');
+		if(Input::has('param')) return $this->organizationTypeRepo->search(Input::get('param'));
 	}
 
 	/**
-	 * Store a newly created organizationtype in storage.
+	 * Store a newly created category in storage.
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Organizationtype::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		Organizationtype::create($data);
-
-		return Redirect::route('organizationtypes.index');
+		return $this->organizationTypeRepo->store(Input::all());
 	}
 
 	/**
-	 * Display the specified organizationtype.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$organizationtype = Organizationtype::findOrFail($id);
-
-		return View::make('organizationtypes.show', compact('organizationtype'));
-	}
-
-	/**
-	 * Show the form for editing the specified organizationtype.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$organizationtype = Organizationtype::find($id);
-
-		return View::make('organizationtypes.edit', compact('organizationtype'));
-	}
-
-	/**
-	 * Update the specified organizationtype in storage.
+	 * Update the specified category in storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function update($id)
 	{
-		$organizationtype = Organizationtype::findOrFail($id);
-
-		$validator = Validator::make($data = Input::all(), Organizationtype::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		$organizationtype->update($data);
-
-		return Redirect::route('organizationtypes.index');
+		return $this->organizationTypeRepo->update($id, Input::all());
 	}
 
 	/**
-	 * Remove the specified organizationtype from storage.
+	 * Remove the specified category from storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function destroy($id)
 	{
-		Organizationtype::destroy($id);
-
-		return Redirect::route('organizationtypes.index');
+		return $this->organizationTypeRepo->destroy($id);
 	}
 
 }

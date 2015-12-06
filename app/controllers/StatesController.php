@@ -1,107 +1,59 @@
 <?php
 
+use BukaData\Contracts\StateInterface as StateRepo;
+
 class StatesController extends \BaseController {
 
+	public function __construct(StateRepo $stateRepo)
+  	{
+    	$this->stateRepo  = $stateRepo;
+  	}
+
 	/**
-	 * Display a listing of states
+	 * Display a listing of categories
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		$states = State::all();
-
-		return View::make('states.index', compact('states'));
+		return $this->stateRepo->all();
 	}
 
-	/**
-	 * Show the form for creating a new state
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function search()
 	{
-		return View::make('states.create');
+		if(Input::has('param')) return $this->stateRepo->search(Input::get('param'));
 	}
 
 	/**
-	 * Store a newly created state in storage.
+	 * Store a newly created category in storage.
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), State::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		State::create($data);
-
-		return Redirect::route('states.index');
+		return $this->stateRepo->store(Input::all());
 	}
 
 	/**
-	 * Display the specified state.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$state = State::findOrFail($id);
-
-		return View::make('states.show', compact('state'));
-	}
-
-	/**
-	 * Show the form for editing the specified state.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$state = State::find($id);
-
-		return View::make('states.edit', compact('state'));
-	}
-
-	/**
-	 * Update the specified state in storage.
+	 * Update the specified category in storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function update($id)
 	{
-		$state = State::findOrFail($id);
-
-		$validator = Validator::make($data = Input::all(), State::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		$state->update($data);
-
-		return Redirect::route('states.index');
+		return $this->stateRepo->update($id, Input::all());
 	}
 
 	/**
-	 * Remove the specified state from storage.
+	 * Remove the specified category from storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function destroy($id)
 	{
-		State::destroy($id);
-
-		return Redirect::route('states.index');
+		return $this->stateRepo->destroy($id);
 	}
 
 }

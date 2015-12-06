@@ -31,8 +31,7 @@ class CategoriesController extends \BaseController {
 	 */
 	public function store()
 	{
-		$inputs = Input::all();
-		return $this->categoryRepo->store($inputs);
+		return $this->categoryRepo->store(Input::all());
 	}
 
 	/**
@@ -43,8 +42,7 @@ class CategoriesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$inputs = Input::all();
-		return $this->categoryRepo->update($id, $inputs);
+		return $this->categoryRepo->update($id, Input::all());
 	}
 
 	/**

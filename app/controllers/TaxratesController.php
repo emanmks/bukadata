@@ -1,114 +1,59 @@
 <?php
 
-use BukaData\Processors\Taxrate as TaxrateProcessor;
+use BukaData\Contracts\TaxrateInterface as TaxrateRepo;
 
 class TaxratesController extends \BaseController {
 
-	public function __construct(TaxrateProcessor $taxrateProcessor)
+	public function __construct(TaxrateRepo $taxrateRepo)
   	{
-    	$this->taxrateProcessor  = $taxrateProcessor;
+    	$this->taxrateRepo  = $taxrateRepo;
   	}
+
 	/**
-	 * Display a listing of taxrates
+	 * Display a listing of categories
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		//$taxrates = Taxrate::all();
-
-		//return View::make('taxrates.index', compact('taxrates'));
-		return $this->taxrateProcessor->all();
+		return $this->taxrateRepo->all();
 	}
 
-	/**
-	 * Show the form for creating a new taxrate
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function search()
 	{
-		return View::make('taxrates.create');
+		if(Input::has('param')) return $this->taxrateRepo->search(Input::get('param'));
 	}
 
 	/**
-	 * Store a newly created taxrate in storage.
+	 * Store a newly created category in storage.
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Taxrate::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		Taxrate::create($data);
-
-		return Redirect::route('taxrates.index');
+		return $this->taxrateRepo->store(Input::all());
 	}
 
 	/**
-	 * Display the specified taxrate.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$taxrate = Taxrate::findOrFail($id);
-
-		return View::make('taxrates.show', compact('taxrate'));
-	}
-
-	/**
-	 * Show the form for editing the specified taxrate.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$taxrate = Taxrate::find($id);
-
-		return View::make('taxrates.edit', compact('taxrate'));
-	}
-
-	/**
-	 * Update the specified taxrate in storage.
+	 * Update the specified category in storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function update($id)
 	{
-		$taxrate = Taxrate::findOrFail($id);
-
-		$validator = Validator::make($data = Input::all(), Taxrate::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		$taxrate->update($data);
-
-		return Redirect::route('taxrates.index');
+		return $this->taxrateRepo->update($id, Input::all());
 	}
 
 	/**
-	 * Remove the specified taxrate from storage.
+	 * Remove the specified category from storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function destroy($id)
 	{
-		Taxrate::destroy($id);
-
-		return Redirect::route('taxrates.index');
+		return $this->taxrateRepo->destroy($id);
 	}
 
 }

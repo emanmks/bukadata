@@ -1,107 +1,59 @@
 <?php
 
+use BukaData\Contracts\VillageInterface as VillageRepo;
+
 class VillagesController extends \BaseController {
 
+	public function __construct(VillageRepo $villageRepo)
+  	{
+    	$this->villageRepo  = $villageRepo;
+  	}
+
 	/**
-	 * Display a listing of villages
+	 * Display a listing of categories
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		$villages = Village::all();
-
-		return View::make('villages.index', compact('villages'));
+		return $this->villageRepo->all();
 	}
 
-	/**
-	 * Show the form for creating a new village
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function search()
 	{
-		return View::make('villages.create');
+		if(Input::has('param')) return $this->villageRepo->search(Input::get('param'));
 	}
 
 	/**
-	 * Store a newly created village in storage.
+	 * Store a newly created category in storage.
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Village::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		Village::create($data);
-
-		return Redirect::route('villages.index');
+		return $this->villageRepo->store(Input::all());
 	}
 
 	/**
-	 * Display the specified village.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$village = Village::findOrFail($id);
-
-		return View::make('villages.show', compact('village'));
-	}
-
-	/**
-	 * Show the form for editing the specified village.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$village = Village::find($id);
-
-		return View::make('villages.edit', compact('village'));
-	}
-
-	/**
-	 * Update the specified village in storage.
+	 * Update the specified category in storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function update($id)
 	{
-		$village = Village::findOrFail($id);
-
-		$validator = Validator::make($data = Input::all(), Village::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		$village->update($data);
-
-		return Redirect::route('villages.index');
+		return $this->villageRepo->update($id, Input::all());
 	}
 
 	/**
-	 * Remove the specified village from storage.
+	 * Remove the specified category from storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function destroy($id)
 	{
-		Village::destroy($id);
-
-		return Redirect::route('villages.index');
+		return $this->villageRepo->destroy($id);
 	}
 
 }

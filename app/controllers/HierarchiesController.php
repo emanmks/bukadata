@@ -8,107 +8,52 @@ class HierarchiesController extends \BaseController {
   	{
     	$this->hierarchyProcessor  = $hierarchyProcessor;
   	}
+  	
 	/**
-	 * Display a listing of hierarchies
+	 * Display a listing of categories
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		//$hierarchies = Hierarchy::all();
-
-		//return View::make('hierarchies.index', compact('hierarchies'));
 		return $this->hierarchyProcessor->all();
 	}
 
-	/**
-	 * Show the form for creating a new hierarchy
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function search()
 	{
-		return View::make('hierarchies.create');
+		if(Input::has('param')) return $this->hierarchyProcessor->search(Input::get('param'));
 	}
 
 	/**
-	 * Store a newly created hierarchy in storage.
+	 * Store a newly created category in storage.
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Hierarchy::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		Hierarchy::create($data);
-
-		return Redirect::route('hierarchies.index');
+		return $this->hierarchyProcessor->store(Input::all());
 	}
 
 	/**
-	 * Display the specified hierarchy.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$hierarchy = Hierarchy::findOrFail($id);
-
-		return View::make('hierarchies.show', compact('hierarchy'));
-	}
-
-	/**
-	 * Show the form for editing the specified hierarchy.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$hierarchy = Hierarchy::find($id);
-
-		return View::make('hierarchies.edit', compact('hierarchy'));
-	}
-
-	/**
-	 * Update the specified hierarchy in storage.
+	 * Update the specified category in storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function update($id)
 	{
-		$hierarchy = Hierarchy::findOrFail($id);
-
-		$validator = Validator::make($data = Input::all(), Hierarchy::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		$hierarchy->update($data);
-
-		return Redirect::route('hierarchies.index');
+		return $this->hierarchyProcessor->update($id, Input::all());
 	}
 
 	/**
-	 * Remove the specified hierarchy from storage.
+	 * Remove the specified category from storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function destroy($id)
 	{
-		Hierarchy::destroy($id);
-
-		return Redirect::route('hierarchies.index');
+		return $this->hierarchyProcessor->destroy($id);
 	}
 
 }

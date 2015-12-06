@@ -1,112 +1,59 @@
 <?php
 
-use BukaData\Processors\Organization as OrganizationProcessor;
+use BukaData\Contracts\OrganizationInterface as OrganizationRepo;
 
 class OrganizationsController extends \BaseController {
 
-	public function __construct(OrganizationProcessor $organizationProcessor)
+	public function __construct(OrganizationRepo $organizationRepo)
   	{
-    	$this->organizationProcessor  = $organizationProcessor;
+    	$this->organizationRepo  = $organizationRepo;
   	}
 
 	/**
-	 * Display a listing of organizations
+	 * Display a listing of categories
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		return $this->organizationProcessor->all();
+		return $this->organizationRepo->all();
 	}
 
-	/**
-	 * Show the form for creating a new organization
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function search()
 	{
-		return View::make('organizations.create');
+		if(Input::has('param')) return $this->organizationRepo->search(Input::get('param'));
 	}
 
 	/**
-	 * Store a newly created organization in storage.
+	 * Store a newly created category in storage.
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Organization::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		Organization::create($data);
-
-		return Redirect::route('organizations.index');
+		return $this->organizationRepo->store(Input::all());
 	}
 
 	/**
-	 * Display the specified organization.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$organization = Organization::findOrFail($id);
-
-		return View::make('organizations.show', compact('organization'));
-	}
-
-	/**
-	 * Show the form for editing the specified organization.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$organization = Organization::find($id);
-
-		return View::make('organizations.edit', compact('organization'));
-	}
-
-	/**
-	 * Update the specified organization in storage.
+	 * Update the specified category in storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function update($id)
 	{
-		$organization = Organization::findOrFail($id);
-
-		$validator = Validator::make($data = Input::all(), Organization::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		$organization->update($data);
-
-		return Redirect::route('organizations.index');
+		return $this->organizationRepo->update($id, Input::all());
 	}
 
 	/**
-	 * Remove the specified organization from storage.
+	 * Remove the specified category from storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function destroy($id)
 	{
-		Organization::destroy($id);
-
-		return Redirect::route('organizations.index');
+		return $this->organizationRepo->destroy($id);
 	}
 
 }

@@ -1,114 +1,59 @@
 <?php
 
-use BukaData\Processors\Transaction as TransactionProcessor;
+use BukaData\Contracts\TransactionInterface as TransactionRepo;
 
 class TransactionsController extends \BaseController {
 
-	public function __construct(TransactionProcessor $transactionProcessor)
+	public function __construct(TransactionRepo $transactionRepo)
   	{
-    	$this->transactionProcessor  = $transactionProcessor;
+    	$this->transactionRepo  = $transactionRepo;
   	}
+
 	/**
-	 * Display a listing of transactions
+	 * Display a listing of categories
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		//$transactions = Transaction::all();
-
-		//return View::make('transactions.index', compact('transactions'));
-		return $this->transactionProcessor->all();
+		return $this->transactionRepo->all();
 	}
 
-	/**
-	 * Show the form for creating a new transaction
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function search()
 	{
-		return View::make('transactions.create');
+		if(Input::has('param')) return $this->transactionRepo->search(Input::get('param'));
 	}
 
 	/**
-	 * Store a newly created transaction in storage.
+	 * Store a newly created category in storage.
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Transaction::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		Transaction::create($data);
-
-		return Redirect::route('transactions.index');
+		return $this->transactionRepo->store(Input::all());
 	}
 
 	/**
-	 * Display the specified transaction.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$transaction = Transaction::findOrFail($id);
-
-		return View::make('transactions.show', compact('transaction'));
-	}
-
-	/**
-	 * Show the form for editing the specified transaction.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$transaction = Transaction::find($id);
-
-		return View::make('transactions.edit', compact('transaction'));
-	}
-
-	/**
-	 * Update the specified transaction in storage.
+	 * Update the specified category in storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function update($id)
 	{
-		$transaction = Transaction::findOrFail($id);
-
-		$validator = Validator::make($data = Input::all(), Transaction::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		$transaction->update($data);
-
-		return Redirect::route('transactions.index');
+		return $this->transactionRepo->update($id, Input::all());
 	}
 
 	/**
-	 * Remove the specified transaction from storage.
+	 * Remove the specified category from storage.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function destroy($id)
 	{
-		Transaction::destroy($id);
-
-		return Redirect::route('transactions.index');
+		return $this->transactionRepo->destroy($id);
 	}
 
 }
