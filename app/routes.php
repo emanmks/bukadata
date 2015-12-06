@@ -18,6 +18,7 @@ Route::get('partisipasi', 'HomeController@participation');
 Route::get('bergabung', 'HomeController@registration');
 Route::get('dokumentasi-api', 'HomeController@documentation');
 Route::get('dashboard', 'HomeController@dashboard');
+Route::get('transaksi', 'TransactionsController@registration');
 
 Route::group(array('prefix' => 'dashboard'), function() {
     Route::get('transactions', 'DashboardController@showTransactions');

@@ -1,12 +1,20 @@
 <?php
 
 use BukaData\Contracts\TransactionInterface as TransactionRepo;
+use BukaData\Contracts\ProjectInterface as ProjectProcessor;
+use BukaData\Contracts\CategoryInterface as CategoryRepo;
+use BukaData\Contracts\TaxrateInterface as TaxrateRepo;
+use BukaData\Contracts\UomInterface as UomRepo;
 
-class TransactionsController extends \BaseController {
+class TransactionsController extends BaseController {
 
-	public function __construct(TransactionRepo $transactionRepo)
+	public function __construct(UomRepo $uomRepo, TaxrateRepo $taxrateRepo, CategoryRepo $categoryRepo, ProjectProcessor $projectProcessor, TransactionRepo $transactionRepo)
   	{
     	$this->transactionRepo  = $transactionRepo;
+    	$this->projectProcessor = $projectProcessor;
+    	$this->categoryRepo = $categoryRepo;
+    	$this->taxrateRepo = $taxrateRepo;
+    	$this->uomRepo = $uomRepo;
   	}
 
 	/**
@@ -56,4 +64,13 @@ class TransactionsController extends \BaseController {
 		return $this->transactionRepo->destroy($id);
 	}
 
+	public function registration()
+	{
+		$projects = $this->projectProcessor->all()->lists("name", "id");
+		$categories = $this->categoryRepo->all()->lists("name", "id");
+		$taxes = $this->taxrateRepo->all()->lists("name", "id");
+		$uoms = $this->uomRepo->all()->lists("name", "id");
+		return View::make('transactions.create', compact('projects', 'categories', 'taxes', 'uoms'));
+	}
+	
 }
