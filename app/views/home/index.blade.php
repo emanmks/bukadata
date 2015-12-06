@@ -12,7 +12,12 @@
                 dalam bentuk digital. Menjadi tantangan bagi instansi pemerintah maupun korporasi untuk membuktikan
                 komitmen mereka akan Kejujuran dan Keterbukaan yang akan menghasilkan integritas penyelenggara negara.
             </h4>
-            <iframe style="border:none;width:750px;height:625px;" src="http://icant.co.uk/slidesharehtml/embed.php?url=http://www.slideshare.net/SolaimanMansyur/buka-data&width=700"></iframe>
+
+            <br>
+            <div class="text-center">
+                <iframe style="border:none;width:750px;height:625px;" src="http://icant.co.uk/slidesharehtml/embed.php?url=http://www.slideshare.net/SolaimanMansyur/buka-data&width=700"></iframe>
+
+            </div>
         </section>
     </div>
 
