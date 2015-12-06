@@ -44,7 +44,7 @@ class HomeController extends BaseController {
 
 	public function registration()
 	{
-		$organizationTypes = $this->OrganizationTypeRepo->all()->lists("name","id");
+		$organizationTypes = $this->organizationTypeRepo->all()->lists("name","id");
 		return View::make('home.registration', compact('organizationTypes'));
 	}
 
