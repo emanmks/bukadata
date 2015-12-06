@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="row">
-        <section class="content">
+        <section class="content text-center">
 
             <h1>BukaData</h1>
 
@@ -14,7 +14,7 @@
             </h4>
 
             <br>
-            <div class="text-center">
+            <div>
                 <iframe style="border:none;width:750px;height:625px;" src="http://icant.co.uk/slidesharehtml/embed.php?url=http://www.slideshare.net/SolaimanMansyur/buka-data&width=700"></iframe>
 
             </div>
