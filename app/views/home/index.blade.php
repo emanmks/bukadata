@@ -15,8 +15,8 @@
 
             <br>
             <div>
-                <iframe style="border:none;width:465px;height:425px;" src="http://icant.co.uk/slidesharehtml/embed.php?url=http://www.slideshare.net/SolaimanMansyur/buka-data&width=450&height=425"></iframe>
-
+                <!-- <iframe style="border:none;width:465px;height:425px;" src="http://icant.co.uk/slidesharehtml/embed.php?url=http://www.slideshare.net/SolaimanMansyur/buka-data&width=450&height=425"></iframe> -->
+                <iframe width="465" height="425" src="https://www.youtube.com/embed/SfWvRfMtB7w" frameborder="0" allowfullscreen></iframe>
             </div>
         </section>
     </div>
