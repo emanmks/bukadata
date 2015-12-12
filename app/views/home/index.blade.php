@@ -59,7 +59,7 @@
             <a class="ui large button">Selengkapnya</a>
 
             <h3 class="ui header">Mengapa Harus Buka Data</h3>
-            <p>Karena tidak adanya sumber informasi yang berisi fakta. Disaat media massa hanya berisi opini, prasangka & pengalihan isu. Buka Data hadir untuk . Buka Data akan mejadi sumber referensi valid karena data yang ada adalah klaim dari organisasi terkait.</p>
+            <p>Karena tidak adanya sumber informasi yang berisi fakta. Disaat media massa hanya berisi opini, prasangka & pengalihan isu. Buka Data hadir untuk menjadi sumber referensi valid karena data yang ada adalah klaim dari organisasi terkait.</p>
             <a class="ui large button">Selengkapnya</a>
 
             <h3 class="ui header">Manfaat BukaData</h3>
